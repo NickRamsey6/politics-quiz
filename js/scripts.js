@@ -1,16 +1,25 @@
 $(document).ready(function() {
-  var age = parseInt(prompt("Please enter your age"));
+  debugger;
+  var height = parseInt(prompt("Please enter your height in inches"));
 
-  if (age >= 21) {
-    $('#over21').show();
-  } else if (age < 21) {
-    $('#under21').show();
+  if (height >= 60) {
+    $('#over60').addClass("highlight");
+  } else if (height < 60) {
+    $('#under60').addClass("highlight");
   } else {
-    var age = parseInt(prompt('Looks like you didn\'t type a number! Please enter a number'));
-    if (age >= 21) {
-      $('#over21').show();
-    } else if (age < 21) {
-      $('#under21').show();
-    }
+    heightChecker(height);
+
+  }
+
+  function heightChecker(height) {
+    while ($.type(height) === NaN);
+      var height = parseInt(prompt('Looks like you didn\'t type a number! Please enter a number'));
+      if (height >= 60) {
+        $('#over60').addClass("highlight");
+      } else if (height < 60) {
+        $('#under60').addClass("highlight");
+      } else {
+        heightChecker(height);
+      }
   }
 });
